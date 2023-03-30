@@ -1,0 +1,21 @@
+@import '../null.css';
+
+nav {
+    width: 370px;
+    padding: 25px 40px 50px 35px;
+    background: #F2E4FD;
+    border-radius: 0px 35px 35px 0px;
+    margin-right: 50px;
+}
+h3 {
+    font-weight: 700;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+li a{
+    font-weight: 400;
+    font-size: 20px;
+    text-decoration: none;
+    color: #000;
+}

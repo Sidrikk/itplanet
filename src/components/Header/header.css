@@ -1,18 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import '../null.css';
+
 header {
     display: flex;
     justify-content: space-between;
-    height: 95px;
-    margin: 20px;
+    align-items: center;
+    height: 100px;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    margin-bottom: 65px;
+}
+img {
+    margin: 0;
 }
 .header-menu {
     display: flex;
-    
 }
 .header-menu ul {
     display: flex;
-
+    align-items: center;
+    margin: 0;
 }
 .header-menu ul li {
     margin-right: 40px;
     list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+.header-menu ul li a {
+    font-weight: 700;
+    font-size: 24px;
+    color: #818181;
+    text-decoration: none;
+}
+#active-link a{
+    color: #000;
+}
+
+.logo {
+    display: flex;
+    align-items:center;
+}
+.logo img {
+    margin: 0;
+    margin-right: 5px;
+}
+.user-profile img {
+    margin: 0;
 }

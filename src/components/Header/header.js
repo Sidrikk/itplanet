@@ -8,7 +8,7 @@ import profileImg from "../../images/user-profile.png"
 import './header.css';
 
 
-const Header = ({ siteTitle }) => (
+const Header = () => (
     <header>
         <div className="logo">
             <img src={logoImg} alt="Логотип" />
@@ -16,10 +16,10 @@ const Header = ({ siteTitle }) => (
         </div>
         <div className="header-menu">
             <ul>
-                <li className="active-link">Лекции</li>
-                <li>Курсовой проект</li>
-                <li>Дополнительные материалы</li>
-                <li>Тесты</li>
+                <li id="active-link"><a href="#">Лекции</a></li>
+                <li><a href="#">Курсовой проект</a></li>
+                <li><a href="#">Дополнительные материалы</a></li>
+                <li><a href="#">Тесты</a></li>
             </ul>
             <div className="user-profile">
                 <img src={profileImg} alt="Профиль пользователя" />
