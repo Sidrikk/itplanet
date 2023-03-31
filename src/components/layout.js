@@ -26,13 +26,34 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header />
+      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div className="main-content">
-        <Sidebar/>
-        <Main />
+        <Sidebar></Sidebar>
+        <main>{children}</main>
+        <footer
+          style={{
+            marginTop: `var(--space-5)`,
+            fontSize: `var(--font-sm)`,
+          }}
+        >
+        </footer>
       </div>
     </>
   )
 }
+
+
+// const Layout = ({ data }) => {
+
+//   return (
+//     <>
+//       <Header />
+//       <div className="main-content">
+//         <Sidebar data={data}/>
+//         <Main/>
+//       </div>
+//     </>
+//   )
+// }
 
 export default Layout

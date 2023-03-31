@@ -227,3 +227,8 @@ pre tt:after {
 .main-content {
   display: flex;
 }
+
+main {
+  max-width: 1040px;
+  font-size: 24px;
+}
