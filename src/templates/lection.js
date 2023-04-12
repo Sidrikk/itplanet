@@ -13,6 +13,12 @@ const Lection = ({ data }) => {
       axe.default(React, ReactDOM, 1000);
       // ReactDOM.render(<App />, document.getElementById('root'));
     });
+
+    
+    // document.querySelectorAll('img').forEach(item => {
+    //   console.log(item);
+    // })
+
 return (
   <Layout>
     <Seo title={title}></Seo>

@@ -3,6 +3,7 @@ title: Лекция 1
 category: lections
 url: lection1
 index: 1
+topic: 1
 ---
 
 **Тема 1. Введение в проектирование в информационных системах.**
