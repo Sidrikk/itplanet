@@ -30,30 +30,10 @@ const Layout = ({ children }) => {
       <div className="main-content">
         <Sidebar></Sidebar>
         <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `var(--space-5)`,
-            fontSize: `var(--font-sm)`,
-          }}
-        >
-        </footer>
+        <footer></footer>
       </div>
     </>
   )
 }
-
-
-// const Layout = ({ data }) => {
-
-//   return (
-//     <>
-//       <Header />
-//       <div className="main-content">
-//         <Sidebar data={data}/>
-//         <Main/>
-//       </div>
-//     </>
-//   )
-// }
 
 export default Layout

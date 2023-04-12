@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import { ReactDOM } from "react"
 
 import logoImg from "../../images/logo.png"
 import logoText from "../../images/logo-title.png"
@@ -8,7 +9,12 @@ import profileImg from "../../images/user-profile.png"
 import './header.css';
 
 
-const Header = () => (
+const Header = () => {
+    import('react-axe').then(axe => {
+        axe.default(React, ReactDOM, 1000);
+        // ReactDOM.render(<App />, document.getElementById('root'));
+      });
+return (
     <header>
         <div className="logo">
             <img src={logoImg} alt="Логотип" />
@@ -26,6 +32,6 @@ const Header = () => (
             </div>
         </div>
     </header>
-)
+)}
 
 export default Header

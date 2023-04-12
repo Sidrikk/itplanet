@@ -2,6 +2,7 @@
 title: Лекция 3
 category: lections
 url: lection3
+index: 3
 ---
 
 Тема №2 лекция №3: «Жизненный цикл информационной системы»
