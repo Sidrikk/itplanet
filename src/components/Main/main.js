@@ -5,10 +5,14 @@ import { Link } from "gatsby"
 import './main.css';
 
 
-const Main = () => (
+const Main = () => {
+
+   
+
+return (
    <main>
         
    </main>
-)
+)}
 
 export default Main

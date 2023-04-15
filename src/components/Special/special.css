@@ -1,0 +1,30 @@
+.container {
+    position: absolute;
+    background: rgb(230, 230, 230);
+    height: 200px;
+    top: 100px;
+    width: 100%;
+    display: none;
+}
+.special-container {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 60px;
+}
+p {
+    color: #000;
+    margin-bottom: 10px;
+}
+button {
+    /* width: 150px; */
+    padding: 0 20px 0 20px;
+    height: 50px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 139, 139);
+    border-radius: 50px;
+    margin-right: 20px;
+    color: #000;
+    font-size: 16px;
+}

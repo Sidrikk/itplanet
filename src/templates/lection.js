@@ -5,25 +5,52 @@ import Seo from "../components/seo"
 import { graphql, StaticImage, getImage } from "gatsby"
 import { ReactDOM } from "react"
 
+import imgAlt from "../components/imgAlt"
 
 const Lection = ({ data }) => { 
     const { html } = data.markdownRemark;
     const { title, url, category } = data.markdownRemark.frontmatter;
-    import('react-axe').then(axe => {
-      axe.default(React, ReactDOM, 1000);
-      // ReactDOM.render(<App />, document.getElementById('root'));
-    });
+    
+
+    const formData = new FormData();
+
+    document.querySelectorAll('main img').forEach(item => {
+        fetch(item.src)
+            .then(res => res.blob())
+            .then(blob => {
+                const file = new File([blob], 'img.png', { type: blob.type });
+                formData.append('file', file);
+
+                return fetch("http://localhost:8888/predict", {
+                    method: "POST",
+                    body: formData
+                });
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Something went wrong");
+                }
+            })
+            .then(data => {
+                console.log('yesss')
+                item.setAttribute('alt', data.caption)
+            })
+            .catch(error => {
+                console.error("Error:", error);
+        });
+    })
+
 
     
-    // document.querySelectorAll('img').forEach(item => {
-    //   console.log(item);
-    // })
 
+    
 return (
-  <Layout>
-    <Seo title={title}></Seo>
-    <div dangerouslySetInnerHTML={{__html: html}}></div>
-  </Layout>
+    <Layout>
+        <Seo title={title}></Seo>
+        <div dangerouslySetInnerHTML={{__html: html}}></div>
+    </Layout>
 )}
 
 // export const Head = () => <Seo title="Лекция" />

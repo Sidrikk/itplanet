@@ -12,6 +12,7 @@ import Header from "./Header/header"
 import "./layout.css"
 import Sidebar from "./Sidebar/sidebar"
 import Main from "./Main/main"
+import Special from "./Special/special"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -24,9 +25,12 @@ const Layout = ({ children }) => {
     }
   `)
 
+  
+
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      <Special></Special>
       <div className="main-content">
         <Sidebar></Sidebar>
         <main>{children}</main>
