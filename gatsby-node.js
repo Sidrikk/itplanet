@@ -1,3 +1,5 @@
+import { onCreateNode } from './src/components/imgAlt';
+
 const path = require('path')
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -13,6 +15,9 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
+  
+  
+
   
   data.allMarkdownRemark.nodes.forEach(node => {
     const { url, category } = node.frontmatter;

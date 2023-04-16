@@ -14,6 +14,8 @@ import Sidebar from "./Sidebar/sidebar"
 import Main from "./Main/main"
 import Special from "./Special/special"
 
+import { onCreateNode } from "./imgAlt"
+
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -25,7 +27,7 @@ const Layout = ({ children }) => {
     }
   `)
 
-  
+
 
   return (
     <>

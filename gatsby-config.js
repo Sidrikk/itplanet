@@ -22,6 +22,27 @@ module.exports = {
         path: `${__dirname}/src/lections`,
       },
     },
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 800,
+              withWebp: true,
+              linkImagesToOriginal: false,
+              showCaptions: true,
+              wrapperStyle: 'margin-bottom: 1.0725rem;',
+              alt: ({ node, ...rest }) => {
+                const alt = node.fields && node.fields.alt;
+                return alt || '';
+              },
+            },
+          },
+        ],
+      },
+    },
     `gatsby-transformer-sharp`,
     // `gatsby-plugin-sharp`,
     // {

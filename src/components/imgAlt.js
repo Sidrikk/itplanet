@@ -1,19 +1,64 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import imgRequest from './imgRequest';
 
-module.exports = {
-  // Конфигурация Webpack
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.html', // Путь к HTML-файлу
-      filename: 'index.html', // Название выходного HTML-файла
-      inject: 'body', // Место вставки тега script
-      hash: true, // Добавить хеш в название выходного файла
-      minify: true, // Минифицировать HTML-код
-      // Функция, которая будет вызвана для каждого тега <img>
-      // и которая должна возвращать значение для атрибута alt
-      // В этом примере мы просто возвращаем значение "Изображение"
-      // для всех тегов <img>
-      imgAlt: () => 'Изображение'
+const axios = require('axios');
+
+async function getImageAlt(imageUrl) {
+  const formData = new FormData();
+  fetch(imageUrl)
+    .then(res => res.blob())
+    .then(blob => {
+        const file = new File([blob], 'img.png', { type: blob.type });
+        formData.append('file', file);
+
+        return fetch("http://localhost:8888/predict", {
+            method: "POST",
+            body: formData
+        });
     })
-  ]
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error("Something went wrong");
+        }
+    })
+    .then(data => {
+        console.log('yesss')
+        return data.caption
+    })
+    .catch(error => {
+        console.error("Error:", error);
+  });
 }
+
+
+function getNodeImages(node) {
+  const images = [];
+  const findImages = (obj) => {
+    if (obj.type === 'image') {
+      images.push(obj);
+    } else if (obj.children) {
+      obj.children.forEach(findImages);
+    }
+  };
+  node.children.forEach(findImages);
+  return images;
+}
+
+exports.onCreateNode = async ({ node, actions }) => {
+  const { createNodeField } = actions;
+
+  if (node.internal.type === 'MarkdownRemark') {
+    const imageNodes = getNodeImages(node);
+    for (const imageNode of imageNodes) {
+      const { url: imageUrl } = imageNode;
+      const alt = await getImageAlt(imageUrl);
+      createNodeField({
+        node,
+        name: 'alt',
+        value: alt,
+      });
+    }
+  }
+};
+
